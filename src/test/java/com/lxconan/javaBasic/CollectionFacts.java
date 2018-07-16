@@ -56,3 +56,10 @@ public class CollectionFacts {
         assertArrayEquals(new int[] {5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19}, array);
     }
 }
+
+/*
+ * Here are some additional questions:
+ *
+ * - What are the differences between HashTable<K, V> and HashMap<K, V>? And what are the differences between
+ *   ArrayList<T> and Vector<T>.
+ */
