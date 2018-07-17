@@ -1,4 +1,4 @@
-package com.lxconan.javaBasic;
+package com.cultivation.javaBasic;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,10 +7,8 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotSame;
 
 public class StringFacts {
-
     @SuppressWarnings("StringEquality")
     @Test
     public void should_be_immutable() {
@@ -20,7 +18,9 @@ public class StringFacts {
         // TODO: Please modify the following line to pass the test.
         //
         // It is really easy to pass the test. But you have to tell why.
-        final boolean areSame = true;
+        // <--start
+        final boolean areSame = false;
+        // --end-->
 
         assertEquals("The new string", modifiedString);
         assertEquals(areSame, originalString == modifiedString);
@@ -35,7 +35,9 @@ public class StringFacts {
         // TODO: Please modify the following line to pass the test.
         //
         // It is really easy to pass the test. But you have to tell why.
-        final boolean areSame = true;
+        // <--start
+        final boolean areSame = false;
+        // --end-->
 
         assertEquals("The string with tailing space.", modifiedString);
         assertEquals(areSame, originalString == modifiedString);
@@ -51,7 +53,9 @@ public class StringFacts {
         // TODO: Please modify the following line to pass the test.
         //
         // It is really easy to pass the test. But you have to tell why.
-        final boolean areSame = true;
+        // <--start
+        final boolean areSame = false;
+        // --end-->
 
         assertEquals("Part one. Part two.", originalString);
         assertEquals(areSame, originalString == copyOfOriginalString);
@@ -60,10 +64,12 @@ public class StringFacts {
     @SuppressWarnings("unused")
     @Test
     public void should_taken_string_apart() {
-        final String originalString = "Java is great.";
+        final String originalString = "Java is great";
 
         // TODO: Take part of the original string according to expectation.
-        final String partOfString = null;
+        // <--start
+        final String partOfString = originalString.substring(5);
+        // --end-->
 
         final String expectedString = "is great";
 
@@ -76,7 +82,9 @@ public class StringFacts {
         final String originalString = "Java is great.";
 
         // TODO: Take part of the original string according to expectation.
-        final String partOfString = null;
+        // <--start
+        final String partOfString = originalString.substring(5, 7);
+        // --end-->
 
         final String expectedString = "is";
 
@@ -98,7 +106,7 @@ public class StringFacts {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = null;
+        String[] words = sentence.split(" ");
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -111,7 +119,7 @@ public class StringFacts {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = null;
+        String[] words = sentence.split("/");
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -126,6 +134,20 @@ public class StringFacts {
         // TODO: Create string using StringBuilder
         // <--Start
         StringBuilder builder = new StringBuilder();
+
+        StringBuilder edge = new StringBuilder();
+        edge.append("|");
+        for (int i = 0; i < width - 2; ++i) edge.append("-");
+        edge.append("|\n");
+
+        StringBuilder body = new StringBuilder();
+        body.append("|");
+        for (int i = 0; i < width - 2; ++i) body.append(" ");
+        body.append("|\n");
+
+        builder.append(edge);
+        for (int i = 0; i < height - 2; ++i) builder.append(body);
+        builder.append(edge);
         // --End-->
 
         final String expected =
@@ -144,6 +166,7 @@ public class StringFacts {
         int sum = 0;
         // TODO: Write some code to calculate the checksum of the string. The checksum is the sum of each string char.
         // <--Start
+        for (int i = 0; i < text.length(); ++i) sum += text.charAt(i);
         // --End-->
 
         Assert.assertEquals(3655, sum);
@@ -159,7 +182,7 @@ public class StringFacts {
         // こ - U+3053
         // れ - U+308c
         // <--Start
-        final String actual = "";
+        final String actual = "\u306a\u306b\u3053\u308c";
         // --End-->
 
         assertEquals(expected, actual);
@@ -172,7 +195,7 @@ public class StringFacts {
 
         // TODO: Modify the following code to create new string from original String
         // <--Start
-        final String reversed = "";
+        final String reversed = new StringBuilder(original).reverse().toString();
         // --End-->
 
         assertEquals("654321", reversed);
@@ -181,17 +204,97 @@ public class StringFacts {
     @SuppressWarnings("ConstantConditions")
     @Test
     public void should_compare_string_with_different_cases() {
-        final String uppercased = "HELLO";
-        final String lowercased = "hello";
+        final String upperCased = "HELLO";
+        final String lowerCased = "hello";
 
-        Optional<Boolean> equalResult = Optional.of(uppercased.equals(lowercased));
-        Optional<Boolean> equalIgnoreCaseResult = Optional.of(uppercased.equalsIgnoreCase(lowercased));
+        Optional<Boolean> equalResult = Optional.of(upperCased.equals(lowerCased));
+        Optional<Boolean> equalIgnoreCaseResult = Optional.of(upperCased.equalsIgnoreCase(lowerCased));
 
         // TODO: Please change the value of the following 2 lines to pass the test.
-        Optional<Boolean> actualResultOfEqual = Optional.empty();
-        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.empty();
+        // <--start
+        Optional<Boolean> actualResultOfEqual = Optional.of(false);
+        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.of(true);
+        // --end-->
 
         assertEquals(equalResult, actualResultOfEqual);
         assertEquals(equalIgnoreCaseResult, actualResultOfEqualIgnoreCase);
     }
+
+    @Test
+    public void should_get_code_point_count() {
+        final String withSurrogatePairs =
+            new String(Character.toChars(0x20B9F)) + " is a character that you may not know";
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        // TODO: please write down the result directly.
+        final int expectedCharLength = 39;
+        // TODO: please call some method to calculate the result.
+        final int actualCodePointLength =
+            Character.codePointCount(withSurrogatePairs, 0, withSurrogatePairs.length());
+        // --end-->
+
+        assertEquals(expectedCharLength, withSurrogatePairs.length());
+        assertEquals(38, actualCodePointLength);
+    }
+
+    @Test
+    public void should_copy_all_code_point_to_array() {
+        final String withSurrogatePairs =
+            new String(Character.toChars(0x20B9F)) + " is funny";
+
+        final int[] codePoints = getCodePointsFromString(withSurrogatePairs);
+
+        assertArrayEquals(
+            new int[] {0x20B9F, (int)' ', (int)'i', (int)'s', (int)' ', (int)'f', (int)'u', (int)'n', (int)'n', (int)'y'},
+            codePoints);
+    }
+
+    @Test
+    public void should_format_string() {
+        final String name = "Harry";
+        final int age = 23;
+
+        String text = String.format("Hello, %s. Next year, you will be %d.", name, age);
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final String expectedText = "Hello, Harry. Next year, you will be 23.";
+        // --end-->
+
+        assertEquals(expectedText, text);
+    }
+
+    private int[] getCodePointsFromString(String withSurrogatePairs) {
+        // TODO: please implement the method to the pass the test
+        // <--start
+        int length = withSurrogatePairs.length();
+        int codePointCount = Character.codePointCount(withSurrogatePairs, 0, length);
+        int[] codePointArray = new int[codePointCount];
+        int codePointIndex = 0;
+
+        for (int charIndex = 0, cp; charIndex < length; charIndex += Character.charCount(cp)) {
+            cp = withSurrogatePairs.codePointAt(charIndex);
+            codePointArray[codePointIndex++] = cp;
+        }
+
+        return codePointArray;
+        // --end-->
+    }
+
+    /*
+     * - List other string format conversion chars.
+     *   * d - decimal integer
+     *   * x - hexadecimal integer
+     *   * o - octal integer
+     *   * f - fixed-point floating point
+     *   * e - exponential floating point
+     *   * g - general floating point (the shorter of e and f)
+     *   * a - hexadecimal floating point
+     *   * s - string
+     *   * c - character
+     *   * b - boolean
+     *   * h - hash code
+     *   * n - platform dependent line separator
+     */
 }

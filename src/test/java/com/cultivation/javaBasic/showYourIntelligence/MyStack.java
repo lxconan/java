@@ -1,4 +1,4 @@
-package com.lxconan.javaBasic.showYourIntelligence;
+package com.cultivation.javaBasic.showYourIntelligence;
 
 @SuppressWarnings({"unused", "FieldCanBeLocal"})
 public class MyStack {
