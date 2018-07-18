@@ -1,14 +1,12 @@
 package com.cultivation.javaBasic;
 
-import com.cultivation.javaBasic.util.CallingAnotherCtor;
-import com.cultivation.javaBasic.util.FieldNotExplicitlyInitialized;
-import com.cultivation.javaBasic.util.OverloadingFixture;
-import com.cultivation.javaBasic.util.SimpleObjectWithInternalState;
+import com.cultivation.javaBasic.util.*;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class ObjectFacts {
@@ -152,6 +150,25 @@ public class ObjectFacts {
         assertEquals(expected, instance.getName());
     }
 
+    @Test
+    public void should_get_initialization_ordering() {
+        InitializationOrderClass.resetLogs();
+        InitializationOrderClass instance = new InitializationOrderClass();
+        String[] logs = InitializationOrderClass.getLogs();
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final String[] expected = {
+            "Field Initializer",
+            "Initialization Block",
+            "Constructor with argument",
+            "Default constructor"
+        };
+        // --end-->
+
+        assertArrayEquals(expected, logs);
+    }
+
     private static void tryingToUpdateState(SimpleObjectWithInternalState instance) {
         instance.setName("Updated Name");
     }
@@ -169,4 +186,7 @@ public class ObjectFacts {
  * - If there is at least one explicitly defined non-default constructor. Will compiler create a default constructor
  *   for you?
  * - What is the access privilege for method in class marked as `public`, `private`, `protected` and not mark at all.
+ * - What is package private?
+ * - When java program contains dependencies. How to reference those dependencies when executing the program? (The
+ *   -classpath command line argument).
  */
