@@ -1,4 +1,4 @@
-package com.cultivation.javaBasic.util;
+package com.cultivation.javaBasic;
 
 import org.junit.Test;
 
