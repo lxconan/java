@@ -1,12 +1,12 @@
 package com.cultivation.javaBasic;
 
+import com.cultivation.javaBasic.showYourIntelligence.PersonForEquals;
 import com.cultivation.javaBasic.util.*;
 import org.junit.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class InheritanceFacts {
 
@@ -96,7 +96,7 @@ public class InheritanceFacts {
         assertEquals(expectedName, instance.getName());
     }
 
-    @SuppressWarnings("ConstantConditions")
+    @SuppressWarnings({"ConstantConditions", "RedundantCast", "UnnecessaryLocalVariable"})
     @Test
     public void should_use_caution_when_dealing_with_array_type() {
         DerivedFromSuperClassWithDefaultConstructor[] array = new DerivedFromSuperClassWithDefaultConstructor[4];
@@ -174,6 +174,75 @@ public class InheritanceFacts {
 
         assertEquals(expectedResult1.get(), integer instanceof Integer );
         assertEquals(expectedResult2.get(), integer instanceof Long );
+    }
+
+    @SuppressWarnings({"SimplifiableJUnitAssertion", "EqualsWithItself"})
+    @Test
+    public void should_write_perfect_equals_1() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+
+        assertTrue(person.equals(person));
+    }
+
+    @SuppressWarnings("SimplifiableJUnitAssertion")
+    @Test
+    public void should_write_perfect_equals_2() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+        PersonForEquals samePerson = new PersonForEquals("James", (short) 1990);
+
+        assertTrue(person.equals(samePerson));
+        assertTrue(samePerson.equals(person));
+    }
+
+    @SuppressWarnings("SimplifiableJUnitAssertion")
+    @Test
+    public void should_write_perfect_equals_3() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+        PersonForEquals samePerson = new PersonForEquals("James", (short) 1990);
+        PersonForEquals stillTheSamePerson = new PersonForEquals("James", (short) 1990);
+
+        assertTrue(person.equals(samePerson));
+        assertTrue(samePerson.equals(stillTheSamePerson));
+        assertTrue(person.equals(stillTheSamePerson));
+    }
+
+    @SuppressWarnings({"ConstantConditions", "ObjectEqualsNull", "SimplifiableJUnitAssertion"})
+    @Test
+    public void should_write_perfect_equals_4() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+
+        assertFalse(person.equals(null));
+    }
+
+    @SuppressWarnings({"EqualsBetweenInconvertibleTypes", "SimplifiableJUnitAssertion", "UnnecessaryBoxing"})
+    @Test
+    public void should_write_perfect_equals_5() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+        Integer instanceWithOtherType = new Integer(1990);
+
+        assertFalse(person.equals(instanceWithOtherType));
+    }
+
+    @SuppressWarnings("SimplifiableJUnitAssertion")
+    @Test
+    public void should_write_perfect_equals_6() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+        PersonForEquals different = new PersonForEquals("James", (short) 1991);
+
+        assertFalse(person.equals(different));
+        assertFalse(different.equals(person));
+    }
+
+    @Test
+    public void should_write_perfect_equals_7() {
+        PersonForEquals person = new PersonForEquals("James", (short) 1990);
+        PersonForEquals different1 = new PersonForEquals("James", (short) 1991);
+        PersonForEquals different2 = new PersonForEquals("Harry", (short) 1990);
+        PersonForEquals samePerson = new PersonForEquals("James", (short) 1990);
+
+        assertNotEquals(person.hashCode(), different1.hashCode());
+        assertNotEquals(person.hashCode(), different2.hashCode());
+        assertEquals(person.hashCode(), samePerson.hashCode());
     }
 }
 
