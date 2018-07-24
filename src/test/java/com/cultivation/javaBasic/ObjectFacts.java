@@ -150,6 +150,7 @@ public class ObjectFacts {
         assertEquals(expected, instance.getName());
     }
 
+    @SuppressWarnings("unused")
     @Test
     public void should_get_initialization_ordering() {
         InitializationOrderClass.resetLogs();
@@ -167,6 +168,41 @@ public class ObjectFacts {
         // --end-->
 
         assertArrayEquals(expected, logs);
+    }
+
+    @Test
+    public void should_get_message_of_var_length_parameters() {
+        final String message = getMessageOfVarLengthParameters(1, 2, 3);
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final String expected = "1\n2\n3\n";
+        // --end-->
+
+        assertEquals(expected, message);
+    }
+
+
+    @SuppressWarnings("RedundantArrayCreation")
+    @Test
+    public void should_get_message_of_var_length_parameters_2() {
+        final String message = getMessageOfVarLengthParameters(new Object[] {1, 2, 3});
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final String expected = "1\n2\n3\n";
+        // --end-->
+
+        assertEquals(expected, message);
+    }
+
+    private static String getMessageOfVarLengthParameters(Object... args) {
+        StringBuilder builder = new StringBuilder();
+        for (Object arg : args) {
+            builder.append(arg.toString()).append("\n");
+        }
+
+        return builder.toString();
     }
 
     private static void tryingToUpdateState(SimpleObjectWithInternalState instance) {
@@ -189,4 +225,5 @@ public class ObjectFacts {
  * - What is package private?
  * - When java program contains dependencies. How to reference those dependencies when executing the program? (The
  *   -classpath command line argument).
+ * - What if we call `getMessageOfVarLengthParameters("Good", new Object[] {1, 2, 3});`
  */

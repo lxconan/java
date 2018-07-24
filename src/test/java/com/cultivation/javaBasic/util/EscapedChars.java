@@ -9,7 +9,7 @@ public enum EscapedChars {
     SINGLE_QUOTE((char) 0x0027),
     BACKSLASH((char) 0x005c);
 
-    private char value;
+    private final char value;
 
     EscapedChars(char value) {
         this.value = value;

@@ -1,7 +1,6 @@
 package com.cultivation.javaBasic;
 
 import org.junit.Test;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -93,6 +92,7 @@ public class IntegerTypeFacts {
         assertEquals(expectedResult, theNumberWillUnderflow);
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     @Test(expected = ArithmeticException.class)
     public void should_throw_exception_when_overflow() {
         int theNumberWillOverflow = Integer.MAX_VALUE;
