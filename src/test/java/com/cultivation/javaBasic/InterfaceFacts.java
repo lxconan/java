@@ -52,12 +52,8 @@ public class InterfaceFacts {
 
         assertEquals("Person", name);
     }
-
-    @Test
-    public void shit() throws CloneNotSupportedException {
-        ObjectWithoutDefaultCtor instance = new ObjectWithoutDefaultCtor(4);
-        ObjectWithoutDefaultCtor clone = instance.clone();
-
-        assertEquals(4, clone.getValue());
-    }
 }
+
+/*
+ * - Can you clone an object without a default constructor?
+ */
