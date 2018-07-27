@@ -1,7 +1,6 @@
 package com.cultivation.javaBasic;
 
-import com.cultivation.javaBasic.util.GenericFunc;
-import com.cultivation.javaBasic.util.StringFunc;
+import com.cultivation.javaBasic.util.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -67,6 +66,53 @@ public class LambdaFacts {
         // --end-->
 
         assertEquals(expected, message);
+    }
+
+    @Test
+    public void should_evaluate_captured_variable_when_executing() {
+        ValueHolder<String> value = new ValueHolder<>();
+        value.setValue("I am the King of the world!");
+
+        StringFunc lambda = () -> "The length of captured value is: " + value.getValue().length();
+
+        // TODO: please write down the expected string directly.
+        // <--start
+        final String expected = "The length of captured value is: 4";
+        // --end-->
+
+        value.setValue("Blah");
+        assertEquals(expected, lambda.getString());
+    }
+
+    @Test
+    public void should_extend_variable_scope() {
+        StringFunc stringFunc = returnLambda();
+        String message = stringFunc.getString();
+
+        // TODO: please write down the expected string directly.
+        // <--start
+        final String expected = "In the year 2019";
+        // --end-->
+
+        assertEquals(expected, message);
+    }
+
+    @Test
+    public void should_capture_this_variable() {
+        ThisInClosure instance = new ThisInClosure();
+        StringFunc stringFunc = instance.getLambda();
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final String expected = "ThisInClosure";
+        // --end-->
+
+        assertEquals(expected, stringFunc.getString());
+    }
+
+    private static StringFunc returnLambda() {
+        int year = 2019;
+        return () -> "In the year " + year;
     }
 
     private static String staticMethod() {
