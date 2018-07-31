@@ -4,16 +4,16 @@ import com.cultivation.javaBasic.util.AnonymousClassUpdateField;
 import com.cultivation.javaBasic.util.InnerClassUpdateField;
 import com.cultivation.javaBasic.util.LocalClassUpdateField;
 import com.cultivation.javaBasic.util.StaticInnerClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class InnerClassFacts {
+class InnerClassFacts {
 
     @Test
-    public void should_access_instance_field_of_parent_class() {
+    void should_access_instance_field_of_parent_class() {
         InnerClassUpdateField instance = new InnerClassUpdateField();
         instance.somethingHappen();
 
@@ -26,7 +26,7 @@ public class InnerClassFacts {
     }
 
     @Test
-    public void should_refer_inner_class_from_outside() {
+    void should_refer_inner_class_from_outside() {
         InnerClassUpdateField instance = new InnerClassUpdateField();
 
         InnerClassUpdateField.YearIncrementer incrementer = instance.new YearIncrementer();
@@ -41,7 +41,7 @@ public class InnerClassFacts {
     }
 
     @Test
-    public void should_update_field_using_local_class() {
+    void should_update_field_using_local_class() {
         LocalClassUpdateField instance = new LocalClassUpdateField();
         instance.somethingHappen();
 
@@ -54,7 +54,7 @@ public class InnerClassFacts {
     }
 
     @Test
-    public void should_update_field_using_anonymous_class() {
+    void should_update_field_using_anonymous_class() {
         AnonymousClassUpdateField instance = new AnonymousClassUpdateField();
         instance.somethingHappen();
 
@@ -67,7 +67,7 @@ public class InnerClassFacts {
     }
 
     @Test
-    public void should_create_instance_for_static_inner_class() {
+    void should_create_instance_for_static_inner_class() {
         StaticInnerClass instance = new StaticInnerClass();
         StaticInnerClass.Inner inner = instance.createInner();
 

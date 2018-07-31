@@ -1,13 +1,13 @@
 package com.cultivation.javaBasic;
 
 import com.cultivation.javaBasic.showYourIntelligence.MyStack;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-public class ArrayFacts {
+class ArrayFacts {
     @Test
-    public void should_resize_array() {
+    void should_resize_array() {
         final int itemsCount = 25;
         final int initialCapacity = 10;
 

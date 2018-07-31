@@ -2,16 +2,16 @@ package com.cultivation.javaBasic;
 
 import com.cultivation.javaBasic.showYourIntelligence.PersonForEquals;
 import com.cultivation.javaBasic.util.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class InheritanceFacts {
+class InheritanceFacts {
 
     @Test
-    public void should_be_derived_from_object_class() {
+    void should_be_derived_from_object_class() {
         // TODO: please modify the following code to pass the test
         // <--start
         final Class<?> expectedSuperClass = Object.class;
@@ -21,7 +21,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_call_super_class_constructor() {
+    void should_call_super_class_constructor() {
         DerivedFromSuperClassWithDefaultConstructor instance = new DerivedFromSuperClassWithDefaultConstructor();
 
         // TODO: please modify the following code to pass the test
@@ -38,7 +38,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_call_super_class_constructor_continued() {
+    void should_call_super_class_constructor_continued() {
         DerivedFromSuperClassWithDefaultConstructor instance = new DerivedFromSuperClassWithDefaultConstructor(42);
 
         // TODO: please modify the following code to pass the test
@@ -56,7 +56,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_call_super_class_constructor_more() {
+    void should_call_super_class_constructor_more() {
         DerivedFromSuperClassWithDefaultConstructor instance = new DerivedFromSuperClassWithDefaultConstructor("God");
 
         // TODO: please modify the following code to pass the test
@@ -73,7 +73,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_call_most_derived_methods() {
+    void should_call_most_derived_methods() {
         BaseClassForOverriding instance = new DerivedFromBaseClassForOverriding();
 
         // TODO: please modify the following code to pass the test
@@ -85,7 +85,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_call_super_class_methods() {
+    void should_call_super_class_methods() {
         DerivedFromBaseClassForOverridingCallingSuper instance = new DerivedFromBaseClassForOverridingCallingSuper();
 
         // TODO: please modify the following code to pass the test
@@ -98,7 +98,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings({"ConstantConditions", "RedundantCast", "UnnecessaryLocalVariable"})
     @Test
-    public void should_use_caution_when_dealing_with_array_type() {
+    void should_use_caution_when_dealing_with_array_type() {
         DerivedFromSuperClassWithDefaultConstructor[] array = new DerivedFromSuperClassWithDefaultConstructor[4];
         SuperClassWithDefaultConstructor[] arrayWithBaseType = (SuperClassWithDefaultConstructor[])array;
 
@@ -120,7 +120,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings("UnnecessaryLocalVariable")
     @Test
-    public void should_not_make_you_confused() {
+    void should_not_make_you_confused() {
         NestedDerivedClassWithName nested = new NestedDerivedClassWithName();
         DerivedFromBaseClassWithName derived = nested;
 
@@ -133,7 +133,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_not_make_you_confused_2() {
+    void should_not_make_you_confused_2() {
         DerivedFromBaseClassWithName derived = new DerivedFromBaseClassWithName();
 
         // TODO: please modify the following code to pass the test
@@ -146,7 +146,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings("ConstantConditions")
     @Test
-    public void should_use_instance_of_to_determine_inheritance_relationship() {
+    void should_use_instance_of_to_determine_inheritance_relationship() {
         NestedDerivedClassWithName nested = new NestedDerivedClassWithName();
 
         // TODO: please modify the following code to pass the test
@@ -163,7 +163,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings({"ConstantConditions", "UnnecessaryBoxing"})
     @Test
-    public void should_use_instance_of_only_in_inheritance_relationship() {
+    void should_use_instance_of_only_in_inheritance_relationship() {
         final Object integer = new Integer(42);  // the magic of life
 
         // TODO: please modify the following code to pass the test
@@ -178,7 +178,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings({"SimplifiableJUnitAssertion", "EqualsWithItself"})
     @Test
-    public void should_write_perfect_equals_1() {
+    void should_write_perfect_equals_1() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
 
         assertTrue(person.equals(person));
@@ -186,7 +186,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings("SimplifiableJUnitAssertion")
     @Test
-    public void should_write_perfect_equals_2() {
+    void should_write_perfect_equals_2() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
         PersonForEquals samePerson = new PersonForEquals("James", (short) 1990);
 
@@ -196,7 +196,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings("SimplifiableJUnitAssertion")
     @Test
-    public void should_write_perfect_equals_3() {
+    void should_write_perfect_equals_3() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
         PersonForEquals samePerson = new PersonForEquals("James", (short) 1990);
         PersonForEquals stillTheSamePerson = new PersonForEquals("James", (short) 1990);
@@ -208,7 +208,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings({"ConstantConditions", "ObjectEqualsNull", "SimplifiableJUnitAssertion"})
     @Test
-    public void should_write_perfect_equals_4() {
+    void should_write_perfect_equals_4() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
 
         assertFalse(person.equals(null));
@@ -216,7 +216,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings({"EqualsBetweenInconvertibleTypes", "SimplifiableJUnitAssertion", "UnnecessaryBoxing"})
     @Test
-    public void should_write_perfect_equals_5() {
+    void should_write_perfect_equals_5() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
         Integer instanceWithOtherType = new Integer(1990);
 
@@ -225,7 +225,7 @@ public class InheritanceFacts {
 
     @SuppressWarnings("SimplifiableJUnitAssertion")
     @Test
-    public void should_write_perfect_equals_6() {
+    void should_write_perfect_equals_6() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
         PersonForEquals different = new PersonForEquals("James", (short) 1991);
 
@@ -234,7 +234,7 @@ public class InheritanceFacts {
     }
 
     @Test
-    public void should_write_perfect_equals_7() {
+    void should_write_perfect_equals_7() {
         PersonForEquals person = new PersonForEquals("James", (short) 1990);
         PersonForEquals different1 = new PersonForEquals("James", (short) 1991);
         PersonForEquals different2 = new PersonForEquals("Harry", (short) 1990);

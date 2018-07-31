@@ -1,18 +1,18 @@
 package com.cultivation.javaBasic;
 
 import com.cultivation.javaBasic.util.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.Optional;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ObjectFacts {
+class ObjectFacts {
     @SuppressWarnings({"UnnecessaryLocalVariable", "ConstantConditions"})
     @Test
-    public void should_point_to_the_same_object() {
+    void should_point_to_the_same_object() {
         Object objectReference = new Object();
         Object sameReference = objectReference;
 
@@ -27,7 +27,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_point_to_different_object() {
+    void should_point_to_different_object() {
         LocalDate goodDay = LocalDate.of(2018, 5, 10);
         LocalDate sameDay = LocalDate.of(2018, 5, 10);
 
@@ -43,7 +43,7 @@ public class ObjectFacts {
 
     @SuppressWarnings("ConstantConditions")
     @Test
-    public void should_initialized_to_default_value() {
+    void should_initialized_to_default_value() {
         FieldNotExplicitlyInitialized instance = new FieldNotExplicitlyInitialized();
 
         // TODO: please modify the following code to pass the test
@@ -59,7 +59,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_pass_by_value() {
+    void should_pass_by_value() {
         int value = 5;
 
         tryingToUpdateValue(value);
@@ -79,7 +79,7 @@ public class ObjectFacts {
 
     @SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
     @Test
-    public void should_pass_by_value_continued() {
+    void should_pass_by_value_continued() {
         Object objectReference = new Object();
         final Object sameReference = objectReference;
 
@@ -95,7 +95,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_modify_internal_state() {
+    void should_modify_internal_state() {
         SimpleObjectWithInternalState instance = new SimpleObjectWithInternalState("Initial Name");
 
         tryingToUpdateState(instance);
@@ -109,7 +109,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_choose_method_at_compile_time() {
+    void should_choose_method_at_compile_time() {
         OverloadingFixture fixture = new OverloadingFixture();
 
         String actual = fixture.methodWithOneParameter((Object)"I am a string");
@@ -123,7 +123,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_choose_the_most_specific_overload() {
+    void should_choose_the_most_specific_overload() {
         OverloadingFixture fixture = new OverloadingFixture();
         final String name = "name";
         final int integer = 2;
@@ -139,7 +139,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_calling_another_constructor() {
+    void should_calling_another_constructor() {
         CallingAnotherCtor instance = new CallingAnotherCtor();
 
         // TODO: please modify the following code to pass the test
@@ -152,7 +152,7 @@ public class ObjectFacts {
 
     @SuppressWarnings("unused")
     @Test
-    public void should_get_initialization_ordering() {
+    void should_get_initialization_ordering() {
         InitializationOrderClass.resetLogs();
         InitializationOrderClass instance = new InitializationOrderClass();
         String[] logs = InitializationOrderClass.getLogs();
@@ -171,7 +171,7 @@ public class ObjectFacts {
     }
 
     @Test
-    public void should_get_message_of_var_length_parameters() {
+    void should_get_message_of_var_length_parameters() {
         final String message = getMessageOfVarLengthParameters(1, 2, 3);
 
         // TODO: please modify the following code to pass the test
@@ -185,7 +185,7 @@ public class ObjectFacts {
 
     @SuppressWarnings("RedundantArrayCreation")
     @Test
-    public void should_get_message_of_var_length_parameters_2() {
+    void should_get_message_of_var_length_parameters_2() {
         final String message = getMessageOfVarLengthParameters(new Object[] {1, 2, 3});
 
         // TODO: please modify the following code to pass the test

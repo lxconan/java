@@ -4,15 +4,15 @@ import com.cultivation.javaBasic.util.Employee;
 import com.cultivation.javaBasic.util.KeyValuePair;
 import com.cultivation.javaBasic.util.Manager;
 import com.cultivation.javaBasic.util.Pair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GenericFacts {
+class GenericFacts {
     @Test
-    public void should_auto_resolve_generic_method() {
+    void should_auto_resolve_generic_method() {
         final String[] words = {"Hello", "Good", "Morning"};
 
         // TODO: please call getMiddle method for string
@@ -24,16 +24,16 @@ public class GenericFacts {
     }
 
     @Test
-    public void should_specify_a_type_restriction_on_typed_parameters() {
+    void should_specify_a_type_restriction_on_typed_parameters() {
         int minimumInteger = min(new Integer[]{1, 2, 3});
         double minimumReal = min(new Double[]{1.2, 2.2, -1d});
 
         assertEquals(1, minimumInteger);
-        assertEquals(-1d, minimumReal, 0);
+        assertEquals(-1d, minimumReal, 1.0E-05);
     }
 
     @Test
-    public void should_not_know_generic_type_parameters_at_runtime() {
+    void should_not_know_generic_type_parameters_at_runtime() {
         KeyValuePair<String, Integer> pair = new KeyValuePair<>("name", 2);
         KeyValuePair<Integer, String> pairWithDifferentTypeParameter = new KeyValuePair<>(2, "name");
 
@@ -47,7 +47,7 @@ public class GenericFacts {
 
     @SuppressWarnings({"UnnecessaryLocalVariable", "unchecked", "unused"})
     @Test
-    public void should_be_careful_of_raw_type_generic() {
+    void should_be_careful_of_raw_type_generic() {
         Pair<Manager> managerPair = new Pair<>();
         Pair rawPair = managerPair;
         rawPair.setFirst(new Employee());
@@ -65,6 +65,16 @@ public class GenericFacts {
         // --end-->
 
         assertEquals(expected.get(), willThrow);
+    }
+
+    @Test
+    void should_swap() {
+        Pair<String> pair = new Pair<>("Hello", "World");
+
+        swap(pair);
+
+        assertEquals("World", pair.getFirst());
+        assertEquals("Hello", pair.getSecond());
     }
 
     private static <T> T getMiddle(T[] args) {

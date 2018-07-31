@@ -1,13 +1,14 @@
 package com.cultivation.javaBasic;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class IntegerTypeFacts {
+class IntegerTypeFacts {
 
     @Test
-    public void should_get_range_of_primitive_int_type() {
+    void should_get_range_of_primitive_int_type() {
         final int maximum = 0x7fffffff;
         final int minimum = 0x80000000;
 
@@ -22,7 +23,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_get_range_of_primitive_short_type() {
+    void should_get_range_of_primitive_short_type() {
         final short maximum = 32767;
         final short minimum = -32768;
 
@@ -37,7 +38,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_get_range_of_primitive_long_type() {
+    void should_get_range_of_primitive_long_type() {
         final long maximum = 0x7fffffffffffffffL;
         final long minimum = -0x8000000000000000L;
 
@@ -52,7 +53,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_get_range_of_primitive_byte_type() {
+    void should_get_range_of_primitive_byte_type() {
         final byte maximum = 127;
         final byte minimum = -128;
 
@@ -67,7 +68,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_overflow_silently() {
+    void should_overflow_silently() {
         int theNumberWillOverflow = Integer.MAX_VALUE;
         ++theNumberWillOverflow;
 
@@ -80,7 +81,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_underflow_silently() {
+    void should_underflow_silently() {
         int theNumberWillUnderflow = Integer.MIN_VALUE;
         --theNumberWillUnderflow;
 
@@ -93,20 +94,21 @@ public class IntegerTypeFacts {
     }
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
-    @Test(expected = ArithmeticException.class)
-    public void should_throw_exception_when_overflow() {
+    @Test
+    void should_throw_exception_when_overflow() {
         int theNumberWillOverflow = Integer.MAX_VALUE;
-        add(theNumberWillOverflow, 1);
+
+        assertThrows(ArithmeticException.class, () -> add(theNumberWillOverflow, 1));
     }
 
     @Test
-    public void just_prevent_lazy_implementation() {
+    void just_prevent_lazy_implementation() {
         assertEquals(3, add(1, 2));
     }
 
     @SuppressWarnings("PointlessArithmeticExpression")
     @Test
-    public void should_take_care_of_number_type_when_doing_calculation() {
+    void should_take_care_of_number_type_when_doing_calculation() {
         final double result1 = 2 / 3 * 5;
         final double result2 = 2 * 5 / 3;
 
@@ -116,12 +118,12 @@ public class IntegerTypeFacts {
         final double expectedResult2 = 3;
         // --end-->
 
-        assertEquals(expectedResult1, result1, 0);
-        assertEquals(expectedResult2, result2, 0);
+        assertEquals(expectedResult1, result1, +1.0E-05);
+        assertEquals(expectedResult2, result2, +1.0E-05);
     }
 
     @Test
-    public void should_truncate_number_when_casting() {
+    void should_truncate_number_when_casting() {
         final int integer = 0x0123_4567;
         final short smallerInteger = (short)integer;
 
@@ -134,7 +136,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_increment() {
+    void should_increment() {
         int integer = 3;
 
         int result = integer++;
@@ -150,7 +152,7 @@ public class IntegerTypeFacts {
     }
 
     @Test
-    public void should_increment_2() {
+    void should_increment_2() {
         int integer = 3;
 
         int result = ++integer;

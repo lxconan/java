@@ -1,15 +1,15 @@
 package com.cultivation.javaBasic;
 
 import com.cultivation.javaBasic.util.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class LambdaFacts {
+class LambdaFacts {
     @Test
-    public void should_apply_to_interface_with_single_abstract_method() {
+    void should_apply_to_interface_with_single_abstract_method() {
         StringFunc lambda = () -> "Hello";
 
         // TODO: please modify the following code to pass the test
@@ -21,7 +21,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_be_able_to_bind_to_instance_method() {
+    void should_be_able_to_bind_to_instance_method() {
         // TODO: please bind lambda to instanceMethod.
         // <--start
         StringFunc lambda = this::instanceMethod;
@@ -31,7 +31,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_be_able_to_bind_to_static_method() {
+    void should_be_able_to_bind_to_static_method() {
         // TODO: please bind lambda to staticMethod
         // <--start
         StringFunc lambda = LambdaFacts::staticMethod;
@@ -41,7 +41,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_bind_to_constructor() {
+    void should_bind_to_constructor() {
         // TODO: please bind lambda to constructor of ArrayList<Integer>
         // <--start
         GenericFunc<ArrayList<Integer>> lambda = ArrayList::new;
@@ -53,7 +53,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_capture_variable_in_a_closure() {
+    void should_capture_variable_in_a_closure() {
         int captured = 5;
 
         StringFunc lambda = () -> captured + " has been captured.";
@@ -69,7 +69,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_evaluate_captured_variable_when_executing() {
+    void should_evaluate_captured_variable_when_executing() {
         ValueHolder<String> value = new ValueHolder<>();
         value.setValue("I am the King of the world!");
 
@@ -85,7 +85,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_extend_variable_scope() {
+    void should_extend_variable_scope() {
         StringFunc stringFunc = returnLambda();
         String message = stringFunc.getString();
 
@@ -98,7 +98,7 @@ public class LambdaFacts {
     }
 
     @Test
-    public void should_capture_this_variable() {
+    void should_capture_this_variable() {
         ThisInClosure instance = new ThisInClosure();
         StringFunc stringFunc = instance.getLambda();
 

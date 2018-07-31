@@ -1,7 +1,5 @@
 package com.cultivation.javaBasic.util;
 
-import org.junit.Test;
-
 public class AnonymousClassUpdateField {
     private int year;
 
@@ -14,7 +12,6 @@ public class AnonymousClassUpdateField {
     }
 
     @SuppressWarnings("Convert2Lambda")
-    @Test
     public void somethingHappen() {
         Runnable increment = new Runnable() {
             @Override

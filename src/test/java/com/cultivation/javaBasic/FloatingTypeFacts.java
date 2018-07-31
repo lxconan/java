@@ -1,12 +1,14 @@
 package com.cultivation.javaBasic;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FloatingTypeFacts {
+class FloatingTypeFacts {
     @Test
-    public void should_not_get_rounded_result_if_convert_floating_number_to_integer() {
+    void should_not_get_rounded_result_if_convert_floating_number_to_integer() {
         final float floatingPointNumber = 2.75f;
         final int integer = (int)floatingPointNumber;
 
@@ -20,7 +22,7 @@ public class FloatingTypeFacts {
 
     @SuppressWarnings({"divzero", "NumericOverflow"})
     @Test
-    public void should_judge_special_double_cases() {
+    void should_judge_special_double_cases() {
         assertTrue(isInfinity(1d / 0d));
         assertTrue(isInfinity(-1d / 0d));
         assertFalse(isInfinity(2d));
@@ -32,7 +34,7 @@ public class FloatingTypeFacts {
     }
 
     @Test
-    public void should_not_round_number_when_convert_to_integer() {
+    void should_not_round_number_when_convert_to_integer() {
         final float floatingPointNunber = 2.75f;
         final int integer = (int)floatingPointNunber;
 
@@ -45,7 +47,7 @@ public class FloatingTypeFacts {
     }
 
     @Test
-    public void should_round_number() {
+    void should_round_number() {
         final double floatingPointNumber = 2.75;
 
         // TODO: Please call some method to round the floating point number.

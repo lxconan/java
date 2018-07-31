@@ -4,16 +4,16 @@ import com.cultivation.javaBasic.showYourIntelligence.StackFrameHelper;
 import com.cultivation.javaBasic.util.ClosableStateReference;
 import com.cultivation.javaBasic.util.MyClosableType;
 import com.cultivation.javaBasic.showYourIntelligence.StringFormatException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
-public class ExceptionFacts {
+class ExceptionFacts {
     @Test
-    public void should_customize_exception() {
+    void should_customize_exception() {
         try {
             throw new StringFormatException("the message");
         } catch (StringFormatException error) {
@@ -22,7 +22,7 @@ public class ExceptionFacts {
     }
 
     @Test
-    public void should_customize_exception_continued() {
+    void should_customize_exception_continued() {
         Exception innerError = new Exception("inner error");
 
         try {
@@ -34,7 +34,7 @@ public class ExceptionFacts {
     }
 
     @Test
-    public void should_be_careful_of_the_order_of_finally_block() {
+    void should_be_careful_of_the_order_of_finally_block() {
         int confusedResult = confuse(2);
 
         // TODO: please modify the following code to pass the test
@@ -46,7 +46,7 @@ public class ExceptionFacts {
     }
 
     @Test
-    public void should_use_the_try_pattern() {
+    void should_use_the_try_pattern() {
         ClosableStateReference closableStateReference = new ClosableStateReference();
         try (MyClosableType closable = new MyClosableType(closableStateReference))
         {
@@ -62,7 +62,7 @@ public class ExceptionFacts {
     }
 
     @Test
-    public void should_get_method_name_in_stack_frame() {
+    void should_get_method_name_in_stack_frame() {
         String methodName = StackFrameHelper.getCurrentMethodName();
 
         assertEquals(

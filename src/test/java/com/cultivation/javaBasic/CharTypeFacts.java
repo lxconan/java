@@ -1,13 +1,13 @@
 package com.cultivation.javaBasic;
 
 import com.cultivation.javaBasic.util.EscapedChars;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CharTypeFacts {
+class CharTypeFacts {
     @Test
-    public void should_describe_escaped_chars() {
+    void should_describe_escaped_chars() {
         final char backspace = '\b';
         final char tab = '\t';
         final char lineFeed = '\n';

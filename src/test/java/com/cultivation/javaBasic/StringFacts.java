@@ -1,17 +1,16 @@
 package com.cultivation.javaBasic;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class StringFacts {
+class StringFacts {
     @SuppressWarnings("StringEquality")
     @Test
-    public void should_be_immutable() {
+    void should_be_immutable() {
         String originalString = "The original string";
         String modifiedString = originalString.replace("original", "new");
 
@@ -28,7 +27,7 @@ public class StringFacts {
 
     @SuppressWarnings("StringEquality")
     @Test
-    public void all_modification_method_will_create_new_string() {
+    void all_modification_method_will_create_new_string() {
         String originalString = "The string with tailing space.     ";
         String modifiedString = originalString.trim();
 
@@ -45,7 +44,7 @@ public class StringFacts {
 
     @SuppressWarnings("StringEquality")
     @Test
-    public void will_create_new_string_when_concat() {
+    void will_create_new_string_when_concat() {
         String originalString = "Part one. ";
         String copyOfOriginalString = originalString;
         originalString += "Part two.";
@@ -63,7 +62,7 @@ public class StringFacts {
 
     @SuppressWarnings("unused")
     @Test
-    public void should_taken_string_apart() {
+    void should_taken_string_apart() {
         final String originalString = "Java is great";
 
         // TODO: Take part of the original string according to expectation.
@@ -78,7 +77,7 @@ public class StringFacts {
 
     @SuppressWarnings("unused")
     @Test
-    public void should_taken_string_apart_continued() {
+    void should_taken_string_apart_continued() {
         final String originalString = "Java is great.";
 
         // TODO: Take part of the original string according to expectation.
@@ -101,7 +100,7 @@ public class StringFacts {
 
     @SuppressWarnings({"unused", "ConstantConditions"})
     @Test
-    public void should_break_string_into_words() {
+    void should_break_string_into_words() {
         final String sentence = "This is Mike";
 
         // TODO: Extract words in the sentence.
@@ -114,7 +113,7 @@ public class StringFacts {
 
     @SuppressWarnings({"unused", "ConstantConditions"})
     @Test
-    public void should_break_string_into_words_customized() {
+    void should_break_string_into_words_customized() {
         final String sentence = "This/is/Mike";
 
         // TODO: Extract words in the sentence.
@@ -127,7 +126,7 @@ public class StringFacts {
 
     @SuppressWarnings({"unused", "StringBufferReplaceableByString", "MismatchedQueryAndUpdateOfStringBuilder"})
     @Test
-    public void should_create_ascii_art() {
+    void should_create_ascii_art() {
         final int width = 5;
         final int height = 3;
 
@@ -160,7 +159,7 @@ public class StringFacts {
 
     @SuppressWarnings("unused")
     @Test
-    public void should_calculate_checksum_of_a_string() {
+    void should_calculate_checksum_of_a_string() {
         final String text = "A quick brown fox jumps over a lazy dog.";
 
         int sum = 0;
@@ -169,11 +168,11 @@ public class StringFacts {
         for (int i = 0; i < text.length(); ++i) sum += text.charAt(i);
         // --End-->
 
-        Assert.assertEquals(3655, sum);
+        assertEquals(3655, sum);
     }
 
     @Test
-    public void should_convert_unicode_escape() {
+    void should_convert_unicode_escape() {
         final String expected = "なにこれ";
 
         // TODO: Write actual string using unicode escape. The unicode is as follows:
@@ -190,7 +189,7 @@ public class StringFacts {
 
     @SuppressWarnings("unused")
     @Test
-    public void should_reverse_a_string() {
+    void should_reverse_a_string() {
         final String original = "123456";
 
         // TODO: Modify the following code to create new string from original String
@@ -203,7 +202,7 @@ public class StringFacts {
 
     @SuppressWarnings("ConstantConditions")
     @Test
-    public void should_compare_string_with_different_cases() {
+    void should_compare_string_with_different_cases() {
         final String upperCased = "HELLO";
         final String lowerCased = "hello";
 
@@ -221,7 +220,7 @@ public class StringFacts {
     }
 
     @Test
-    public void should_get_code_point_count() {
+    void should_get_code_point_count() {
         final String withSurrogatePairs =
             new String(Character.toChars(0x20B9F)) + " is a character that you may not know";
 
@@ -239,7 +238,7 @@ public class StringFacts {
     }
 
     @Test
-    public void should_copy_all_code_point_to_array() {
+    void should_copy_all_code_point_to_array() {
         final String withSurrogatePairs =
             new String(Character.toChars(0x20B9F)) + " is funny";
 
@@ -251,7 +250,7 @@ public class StringFacts {
     }
 
     @Test
-    public void should_format_string() {
+    void should_format_string() {
         final String name = "Harry";
         final int age = 23;
 

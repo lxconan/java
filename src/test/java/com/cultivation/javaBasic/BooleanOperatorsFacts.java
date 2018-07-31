@@ -1,15 +1,15 @@
 package com.cultivation.javaBasic;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BooleanOperatorsFacts {
+class BooleanOperatorsFacts {
 
     @SuppressWarnings({"PointlessBooleanExpression", "ConstantConditions"})
     @Test
-    public void should_perform_logical_boolean_operations() {
+    void should_perform_logical_boolean_operations() {
         boolean[] actualResults = {
             true && true,
             true && false,
@@ -38,7 +38,7 @@ public class BooleanOperatorsFacts {
     }
 
     @Test
-    public void should_do_bitwise_and_boolean_operation() {
+    void should_do_bitwise_and_boolean_operation() {
         final int value = 0x1234_abcd;
         final int mask = 0x000f_ff00;
 
@@ -51,7 +51,7 @@ public class BooleanOperatorsFacts {
     }
 
     @Test
-    public void should_do_bitwise_or_boolean_operation() {
+    void should_do_bitwise_or_boolean_operation() {
         final int value = 0x1234_0000;
         final int mask = 0x0000_abcd;
 
@@ -64,7 +64,7 @@ public class BooleanOperatorsFacts {
     }
 
     @Test
-    public void should_do_bitwise_not_operation() {
+    void should_do_bitwise_not_operation() {
         final int value = 0x0000_ffff;
 
         // TODO: please write down the result directly to pass the test.

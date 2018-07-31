@@ -2,14 +2,14 @@ package com.cultivation.javaBasic;
 
 import com.cultivation.javaBasic.showYourIntelligence.NameImpl;
 import com.cultivation.javaBasic.util.*;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class InterfaceFacts {
+class InterfaceFacts {
 
     @Test
-    public void should_support_default_method() {
+    void should_support_default_method() {
         InterfaceWithDefaultMethodImpl instance = new InterfaceWithDefaultMethodImpl();
 
         // TODO: please modify the following code to pass the test
@@ -21,7 +21,7 @@ public class InterfaceFacts {
     }
 
     @Test
-    public void should_choose_override_method() {
+    void should_choose_override_method() {
         InterfaceWithOverrideDefaultImpl instance = new InterfaceWithOverrideDefaultImpl();
 
         // TODO: please modify the following code to pass the test
@@ -33,7 +33,7 @@ public class InterfaceFacts {
     }
 
     @Test
-    public void should_choose_override_method_continued() {
+    void should_choose_override_method_continued() {
         InterfaceExtendsInterfaceWithDefaultMethod instance = new InterfaceExtendsInterfaceWithDefaultMethodImpl();
 
         // TODO: please modify the following code to pass the test
@@ -45,7 +45,7 @@ public class InterfaceFacts {
     }
 
     @Test
-    public void should_resolve_ambiguity_by_yourself() {
+    void should_resolve_ambiguity_by_yourself() {
         NameImpl instance = new NameImpl();
 
         String name = instance.getName();
