@@ -80,7 +80,20 @@ class CollectionsFacts {
 
     @Test
     void should_reflects_back_to_original_list_for_sub_range() {
-        
+        List<Integer> integers = new ArrayList<>();
+        for (int i = 0; i < 12; ++i) {
+            integers.add(i);
+        }
+
+        List<Integer> subList = integers.subList(3, 10);
+        subList.clear();
+
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final List<Integer> expected = Arrays.asList(0, 1, 2, 10, 11);
+        // --end-->
+
+        assertIterableEquals(expected, integers);
     }
 }
 
