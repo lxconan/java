@@ -107,7 +107,7 @@ class ReflectionFacts {
     void should_be_able_to_get_the_methods_who_contains_MyAnnotation_annotation() {
         Class<MethodWithAnnotation> theClass = MethodWithAnnotation.class;
 
-        // TODO: please get the methods who contains SuppressWarnings annotation.
+        // TODO: please get the methods who contains MyAnnotation annotation.
         // <--start
         String[] methodsContainsAnnotations = Arrays.stream(theClass.getMethods())
             .filter(a -> a.getAnnotation(MyAnnotation.class) != null)

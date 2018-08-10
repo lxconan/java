@@ -1,11 +1,10 @@
 package com.cultivation.javaBasicExtended.util;
 
-public class DependsOnWithDefaultConstructor {
-    private final WithDefaultConstructor dependent;
+import com.cultivation.javaBasicExtended.showYourIntelligence.myIoC.MyIoCInjection;
 
-    public DependsOnWithDefaultConstructor(WithDefaultConstructor dependent) {
-        this.dependent = dependent;
-    }
+public class DependsOnWithDefaultConstructor {
+    @MyIoCInjection
+    private WithDefaultConstructor dependent;
 
     @Override
     public String toString() {

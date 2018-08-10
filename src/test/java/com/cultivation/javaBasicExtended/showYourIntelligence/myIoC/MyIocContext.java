@@ -1,8 +1,7 @@
 package com.cultivation.javaBasicExtended.showYourIntelligence.myIoC;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,19 +13,39 @@ public class MyIocContext {
     private static final ReflectiveResolver<MyIocContext> defaultResolver = new ReflectiveResolver<>();
 
     public void registerBean(Class<?> beanClazz) {
-        Objects.requireNonNull(beanClazz);
+        if (beanClazz == null) throw new IllegalArgumentException();
+        // TODO: please implement the method to register bean class definition.
+        // <--start
+        if (!containsNoDefaultConstructor(beanClazz)) {
+            throw new IllegalArgumentException("You class contains no default constructor");
+        }
         definitions.put(beanClazz, defaultResolver);
+        // --end-->
     }
 
-    public <T> T getBean(Class<T> clazz) {
-        Objects.requireNonNull(clazz);
-        BiFunction creator = definitions.get(clazz);
+    // TODO: You can add some helper methods to improve readability.
+    // <--start
+    private boolean containsNoDefaultConstructor(Class<?> beanClazz) {
+        Constructor<?>[] constructors = beanClazz.getConstructors();
+        if (constructors.length == 0) { return false; }
+
+        long count = Arrays.stream(constructors)
+            .filter(c -> c.getParameterCount() == 0)
+            .count();
+
+        return count > 0;
+    }
+    // --end-->
+
+    public <T> T getBean(Class<T> beanClazz) {
+        if (beanClazz == null) throw new IllegalArgumentException();
+        BiFunction creator = definitions.get(beanClazz);
         if (creator == null) {
-            throw new IllegalArgumentException("Cannot find type" + clazz.toString());
+            throw new IllegalArgumentException("Cannot find type" + beanClazz.toString());
         }
 
         //noinspection unchecked
-        return (T) creator.apply(this, clazz);
+        return (T) creator.apply(this, beanClazz);
     }
 }
 
@@ -36,50 +55,26 @@ class ReflectiveResolver<T extends MyIocContext> implements BiFunction<T, Class,
     @Override
     public Object apply(T context, Class clazz) {
         Objects.requireNonNull(clazz);
-
-        Constructor[] constructors = clazz.getDeclaredConstructors();
-        if (constructors.length == 0) {
-            return resolveBeanViaDefaultConstructor(clazz);
-        }
-
-        if (constructors.length != 1) {
-            throw new IllegalStateException("I do not know which constructor to call");
-        }
-
-        return resolveBean(context, constructors[0]);
-    }
-
-    private Object resolveBean(T context, Constructor constructor) {
-        if (constructor.isVarArgs()) {
-            throw new IllegalStateException("Do not support var args");
-        }
-
-        Parameter[] parameters = constructor.getParameters();
-        if (parameters.length == 0) {
-            try {
-                return constructor.newInstance();
-            } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-                throw new IllegalStateException("Error occurred while resolving instance.", e);
-            }
-        }
-
-        Object[] arguments = Arrays.stream(parameters)
-            .map(p -> context.getBean(p.getType()))
-            .toArray();
-
         try {
-            return constructor.newInstance(arguments);
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new IllegalStateException("Error occured whiule resolving instance.", e);
+            return resolveBean(context, clazz);
+        } catch (IllegalAccessException | InstantiationException e) {
+            throw new IllegalStateException("Cannot resolve " + clazz.toString(), e);
         }
     }
 
-    private Object resolveBeanViaDefaultConstructor(Class clazz) {
-        try {
-            return clazz.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
-            throw new IllegalStateException("Cannot instantiate via default constructor", e);
+    private Object resolveBean(T context, Class clazz) throws IllegalAccessException, InstantiationException {
+        Object instance = clazz.newInstance();
+        Field[] fields = Arrays.stream(clazz.getDeclaredFields())
+            .filter(f -> f.getDeclaredAnnotation(MyIoCInjection.class) != null)
+            .toArray(Field[]::new);
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Class<?> fieldType = field.getType();
+            Object fieldInstance = context.getBean(fieldType);
+            field.set(instance, fieldInstance);
         }
+
+        return instance;
     }
     // --end-->
 }

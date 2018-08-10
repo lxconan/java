@@ -103,4 +103,6 @@ class CollectionsFacts {
  *   `PriorityQueue`, `HashMap`, `TreeMap`, `EnumMap`, `LinkedHashMap`
  * - What if an collection is modified while an iterator is still iterating?
  * - Can you add or remove items to the list that is returned by `Array.asList` or `Collections.nCopies`?
+ * - What are the differences between HashMap and HashSet?
+ * - What is size(), and what capacity?
  */
