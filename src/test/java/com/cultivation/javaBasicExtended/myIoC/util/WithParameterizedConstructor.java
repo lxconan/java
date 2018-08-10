@@ -1,4 +1,4 @@
-package com.cultivation.javaBasicExtended.util;
+package com.cultivation.javaBasicExtended.myIoC.util;
 
 public class WithParameterizedConstructor {
     static {

@@ -1,6 +1,6 @@
-package com.cultivation.javaBasicExtended.util;
+package com.cultivation.javaBasicExtended.myIoC.util;
 
-import com.cultivation.javaBasicExtended.showYourIntelligence.myIoC.MyIoCInjection;
+import com.cultivation.javaBasicExtended.myIoC.MyIoCInjection;
 
 public class DependsOnWithDefaultConstructor {
     @MyIoCInjection
@@ -15,3 +15,4 @@ public class DependsOnWithDefaultConstructor {
         return dependent;
     }
 }
+

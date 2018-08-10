@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StreamingFacts {
+class StreamingTest {
     @Test
     void should_be_able_to_turn_collection_into_stream() {
         List<String> words = Arrays.asList("a", "quick", "brown", "fox", "jumps", "over");
@@ -135,7 +135,7 @@ class StreamingFacts {
     void should_flatten_stream_of_streams() {
         Stream<Stream<Character>> nameStream = Stream
             .of("Naruto", "Kisuke", "Tomoya")
-            .map(StreamingFacts::letters);
+            .map(StreamingTest::letters);
 
         // TODO: please modify the following code to pass the test
         // <--start

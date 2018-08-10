@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class InnerClassFacts {
+class InnerClassTest {
 
     @Test
     void should_access_instance_field_of_parent_class() {

@@ -9,7 +9,7 @@ import java.time.temporal.TemporalAdjusters;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class DateTimeFacts {
+class DateTimeTest {
     @SuppressWarnings("UnusedAssignment")
     @Test
     void should_be_able_to_use_absolute_time_to_measure_duration() throws Exception {

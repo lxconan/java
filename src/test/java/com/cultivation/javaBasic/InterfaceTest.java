@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class InterfaceFacts {
+class InterfaceTest {
 
     @Test
     void should_support_default_method() {

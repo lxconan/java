@@ -8,7 +8,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class InheritanceFacts {
+class InheritanceTest {
 
     @Test
     void should_be_derived_from_object_class() {

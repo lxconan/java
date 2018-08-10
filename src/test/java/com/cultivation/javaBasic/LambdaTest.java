@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LambdaFacts {
+class LambdaTest {
     @Test
     void should_apply_to_interface_with_single_abstract_method() {
         StringFunc lambda = () -> "Hello";
@@ -34,7 +34,7 @@ class LambdaFacts {
     void should_be_able_to_bind_to_static_method() {
         // TODO: please bind lambda to staticMethod
         // <--start
-        StringFunc lambda = LambdaFacts::staticMethod;
+        StringFunc lambda = LambdaTest::staticMethod;
         // --end-->
 
         assertEquals("staticMethod", lambda.getString());

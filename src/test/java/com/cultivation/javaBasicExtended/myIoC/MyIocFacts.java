@@ -1,10 +1,6 @@
-package com.cultivation.javaBasicExtended;
+package com.cultivation.javaBasicExtended.myIoC;
 
-import com.cultivation.javaBasicExtended.showYourIntelligence.myIoC.MyIocContext;
-import com.cultivation.javaBasicExtended.util.DependsOnWithDefaultConstructor;
-import com.cultivation.javaBasicExtended.util.WithDefaultConstructor;
-import com.cultivation.javaBasicExtended.util.WithNonParameterizedConstructor;
-import com.cultivation.javaBasicExtended.util.WithParameterizedConstructor;
+import com.cultivation.javaBasicExtended.myIoC.util.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +33,20 @@ class MyIocFacts {
         DependsOnWithDefaultConstructor bean = iocContext.getBean(DependsOnWithDefaultConstructor.class);
 
         assertEquals("DependsOnWithDefaultConstructor depends on WithDefaultConstructor", bean.toString());
+    }
+
+    @Test
+    void should_support_subclass() {
+        MyIocContext iocContext = new MyIocContext();
+        iocContext.registerBean(InheritDependsOnWithDefaultConstructor.class);
+        iocContext.registerBean(WithDefaultConstructor.class);
+
+        InheritDependsOnWithDefaultConstructor bean = iocContext.getBean(InheritDependsOnWithDefaultConstructor.class);
+
+        assertEquals(
+            "Inherited: DependsOnWithDefaultConstructor depends on WithDefaultConstructor",
+            bean.toString()
+        );
     }
 
     @Test

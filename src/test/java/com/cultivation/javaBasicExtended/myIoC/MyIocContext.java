@@ -1,13 +1,11 @@
-package com.cultivation.javaBasicExtended.showYourIntelligence.myIoC;
+package com.cultivation.javaBasicExtended.myIoC;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.BiFunction;
 
+@SuppressWarnings("WeakerAccess")
 public class MyIocContext {
     private final Map<Class, BiFunction> definitions = new HashMap<>();
     private static final ReflectiveResolver<MyIocContext> defaultResolver = new ReflectiveResolver<>();
@@ -64,9 +62,7 @@ class ReflectiveResolver<T extends MyIocContext> implements BiFunction<T, Class,
 
     private Object resolveBean(T context, Class clazz) throws IllegalAccessException, InstantiationException {
         Object instance = clazz.newInstance();
-        Field[] fields = Arrays.stream(clazz.getDeclaredFields())
-            .filter(f -> f.getDeclaredAnnotation(MyIoCInjection.class) != null)
-            .toArray(Field[]::new);
+        Field[] fields = getAllAnnotatedFields(clazz);
         for (Field field : fields) {
             field.setAccessible(true);
             Class<?> fieldType = field.getType();
@@ -75,6 +71,25 @@ class ReflectiveResolver<T extends MyIocContext> implements BiFunction<T, Class,
         }
 
         return instance;
+    }
+
+    private Field[] getAllAnnotatedFields(Class clazz) {
+        List<Class> clazzChain = new ArrayList<>();
+        buildClassChain(clazzChain, clazz);
+        return clazzChain.stream()
+            .flatMap(c ->
+                Arrays.stream(c.getDeclaredFields())
+                    .filter(f -> f.getDeclaredAnnotation(MyIoCInjection.class) != null))
+            .toArray(Field[]::new);
+    }
+
+    private void buildClassChain(List<Class> clazzChain, Class clazz) {
+        if (clazz == null) return;
+        clazzChain.add(clazz);
+        Class superclass = clazz.getSuperclass();
+        superclass = superclass == null || superclass == Object.class ? null : superclass;
+        buildClassChain(clazzChain, superclass);
+
     }
     // --end-->
 }

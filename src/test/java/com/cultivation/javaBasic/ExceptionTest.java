@@ -11,7 +11,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class ExceptionFacts {
+class ExceptionTest {
     @Test
     void should_customize_exception() {
         try {
@@ -66,7 +66,7 @@ class ExceptionFacts {
         String methodName = StackFrameHelper.getCurrentMethodName();
 
         assertEquals(
-            "com.cultivation.javaBasic.ExceptionFacts.should_get_method_name_in_stack_frame",
+            "com.cultivation.javaBasic.ExceptionTest.should_get_method_name_in_stack_frame",
             methodName);
     }
 

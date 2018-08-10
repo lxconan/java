@@ -1,4 +1,4 @@
-package com.cultivation.javaBasicExtended.showYourIntelligence.myIoC;
+package com.cultivation.javaBasicExtended.myIoC;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

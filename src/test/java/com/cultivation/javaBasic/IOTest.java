@@ -14,7 +14,7 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(TempDirectory.class)
-class IOFacts {
+class IOTest {
     @Test
     void should_read_write_file_from_file_stream(@TempDirectory.TempDir Path dir) throws Exception {
         final String message = "Hello world!" + System.lineSeparator();

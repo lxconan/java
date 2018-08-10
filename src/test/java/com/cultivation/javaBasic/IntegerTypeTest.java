@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class IntegerTypeFacts {
+class IntegerTypeTest {
 
     @Test
     void should_get_range_of_primitive_int_type() {

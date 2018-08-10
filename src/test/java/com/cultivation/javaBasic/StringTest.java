@@ -7,7 +7,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class StringFacts {
+class StringTest {
     @SuppressWarnings("StringEquality")
     @Test
     void should_be_immutable() {

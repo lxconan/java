@@ -9,7 +9,7 @@ import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
-class CollectionsFacts {
+class CollectionsTest {
     @Test
     void should_go_through_an_iterator() {
         ArrayList<String> collection = new ArrayList<>();

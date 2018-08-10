@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-class ArrayFacts {
+class ArrayTest {
     @Test
     void should_resize_array() {
         final int itemsCount = 25;

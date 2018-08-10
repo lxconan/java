@@ -10,7 +10,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GenericFacts {
+class GenericTest {
     @Test
     void should_auto_resolve_generic_method() {
         final String[] words = {"Hello", "Good", "Morning"};
