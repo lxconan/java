@@ -11,6 +11,9 @@ import java.io.StringWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/*
+ * Difficulty: Hard
+ */
 class PosMachineTest {
     @Test
     void should_print_empty_if_barcode_is_not_provided() throws IOException {

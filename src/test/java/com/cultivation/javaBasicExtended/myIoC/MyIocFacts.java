@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/*
+ * Difficulty: Super hard
+ */
 class MyIocFacts {
     @Test
     void should_create_object_with_default_constructor() {
