@@ -4,6 +4,6 @@ import feign.RequestLine;
 import feign.Response;
 
 interface SimpleHttpServerClient {
-    @RequestLine("GET /app")
+    @RequestLine("GET /message/2")
     Response hello();
 }

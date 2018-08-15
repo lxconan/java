@@ -26,7 +26,7 @@ class SimpleHttpServerFacts {
     }
 
     @Test
-    void should_get_http_200_for_app_route() throws IOException {
+    void should_get_http_200_for_app_route() {
         SimpleHttpServerClient client = Feign.builder()
             .decoder(new StringDecoder())
             .target(SimpleHttpServerClient.class, baseAddress);
@@ -56,7 +56,7 @@ class SimpleHttpServerFacts {
 
         BufferedReader reader = new BufferedReader(response.body().asReader());
         String message = reader.readLine();
-        assertEquals("Hello", message);
+        assertEquals("Hello /message/2", message);
     }
 
     @AfterEach

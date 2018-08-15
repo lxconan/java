@@ -24,7 +24,7 @@ class SimpleHttpServer implements Closeable {
 
     public void start() throws IOException {
         server = HttpServer.create(getInetSocketAddress(), getConcurrentRequestNumber());
-        server.createContext("/app", getHandler());
+        server.createContext("/", getHandler());
         server.setExecutor(null);
         server.start();
     }
