@@ -18,6 +18,9 @@ dependencies {
     compile group: 'org.junit-pioneer', name: 'junit-pioneer', version: '0.1.2'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.6'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+    compile group: 'com.netflix.feign', name: 'feign-core', version: '8.18.0'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
+
 }
 
 test {
