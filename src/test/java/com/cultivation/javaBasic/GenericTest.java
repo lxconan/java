@@ -5,19 +5,21 @@ import com.cultivation.javaBasic.util.KeyValuePair;
 import com.cultivation.javaBasic.util.Manager;
 import com.cultivation.javaBasic.util.Pair;
 import org.junit.jupiter.api.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GenericTest {
+    @SuppressWarnings("unused")
     @Test
     void should_auto_resolve_generic_method() {
         final String[] words = {"Hello", "Good", "Morning"};
 
         // TODO: please call getMiddle method for string
         // <--start
-        final String middle = getMiddle(words);
+        final String middle = null;
         // --end-->
 
         assertEquals("Good", middle);
@@ -32,6 +34,7 @@ class GenericTest {
         assertEquals(-1d, minimumReal, 1.0E-05);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     void should_not_know_generic_type_parameters_at_runtime() {
         KeyValuePair<String, Integer> pair = new KeyValuePair<>("name", 2);
@@ -39,13 +42,13 @@ class GenericTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final Optional<Boolean> expected = Optional.of(true);
+        final Optional<Boolean> expected = Optional.empty();
         // --end-->
 
         assertEquals(expected.get(), pair.getClass().equals(pairWithDifferentTypeParameter.getClass()));
     }
 
-    @SuppressWarnings({"UnnecessaryLocalVariable", "unchecked", "unused"})
+    @SuppressWarnings({"UnnecessaryLocalVariable", "unchecked", "unused", "ConstantConditions"})
     @Test
     void should_be_careful_of_raw_type_generic() {
         Pair<Manager> managerPair = new Pair<>();
@@ -61,7 +64,7 @@ class GenericTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final Optional<Boolean> expected = Optional.of(true);
+        final Optional<Boolean> expected = Optional.empty();
         // --end-->
 
         assertEquals(expected.get(), willThrow);
@@ -77,6 +80,7 @@ class GenericTest {
         assertEquals("Hello", pair.getSecond());
     }
 
+    @SuppressWarnings("unused")
     private static <T> T getMiddle(T[] args) {
         return args[args.length / 2];
     }
@@ -84,34 +88,22 @@ class GenericTest {
     // TODO: please implement the following code to pass the test. It should be generic after all.
     // The method should only accept `Number` and the number should implement `Comparable<T>`
     // <--start
+    @SuppressWarnings("unused")
     private static <T extends Number & Comparable<T>> T min(T[] values) {
-        if (values == null) throw new IllegalArgumentException("Values should not be null");
-        if (values.length == 0) throw new IllegalArgumentException("Values should contains at least one element");
-        T minimum = values[0];
-
-        for (int i = 1; i < values.length; ++i) {
-            T current = values[i];
-            if (minimum.compareTo(current) > 0) minimum = current;
-        }
-
-        return minimum;
+        throw new NotImplementedException();
     }
     // --end-->
 
     // TODO: please implement following method to pass the test. But you cannot change the signature
     // <--start
+    @SuppressWarnings("unused")
     private static void swap(Pair<?> pair) {
-        internalSwap(pair);
+        throw new NotImplementedException();
     }
 
     // TODO: You can add additional method within the range if you like
-    private static <T> void internalSwap(Pair<T> pair) {
-        T first = pair.getFirst();
-        T second = pair.getSecond();
+    // <--start
 
-        pair.setFirst(second);
-        pair.setSecond(first);
-    }
     // --end-->
 }
 

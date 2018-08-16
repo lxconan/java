@@ -1,6 +1,7 @@
 package com.cultivation.javaBasic;
 
 import org.junit.jupiter.api.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Optional;
 
@@ -8,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class StringTest {
-    @SuppressWarnings("StringEquality")
+    @SuppressWarnings({"StringEquality", "ConstantConditions"})
     @Test
     void should_be_immutable() {
         String originalString = "The original string";
@@ -18,14 +19,14 @@ class StringTest {
         //
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final boolean areSame = false;
+        final Optional<Boolean> areSame = Optional.empty();
         // --end-->
 
         assertEquals("The new string", modifiedString);
-        assertEquals(areSame, originalString == modifiedString);
+        assertEquals(areSame.get(), originalString == modifiedString);
     }
 
-    @SuppressWarnings("StringEquality")
+    @SuppressWarnings({"StringEquality", "ConstantConditions"})
     @Test
     void all_modification_method_will_create_new_string() {
         String originalString = "The string with tailing space.     ";
@@ -35,14 +36,14 @@ class StringTest {
         //
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final boolean areSame = false;
+        final Optional<Boolean> areSame = Optional.empty();
         // --end-->
 
         assertEquals("The string with tailing space.", modifiedString);
-        assertEquals(areSame, originalString == modifiedString);
+        assertEquals(areSame.get(), originalString == modifiedString);
     }
 
-    @SuppressWarnings("StringEquality")
+    @SuppressWarnings({"StringEquality", "ConstantConditions"})
     @Test
     void will_create_new_string_when_concat() {
         String originalString = "Part one. ";
@@ -53,11 +54,11 @@ class StringTest {
         //
         // It is really easy to pass the test. But you have to tell why.
         // <--start
-        final boolean areSame = false;
+        final Optional<Boolean> areSame = Optional.empty();
         // --end-->
 
         assertEquals("Part one. Part two.", originalString);
-        assertEquals(areSame, originalString == copyOfOriginalString);
+        assertEquals(areSame.get(), originalString == copyOfOriginalString);
     }
 
     @SuppressWarnings("unused")
@@ -67,7 +68,7 @@ class StringTest {
 
         // TODO: Take part of the original string according to expectation.
         // <--start
-        final String partOfString = originalString.substring(5);
+        final String partOfString = null;
         // --end-->
 
         final String expectedString = "is great";
@@ -82,7 +83,7 @@ class StringTest {
 
         // TODO: Take part of the original string according to expectation.
         // <--start
-        final String partOfString = originalString.substring(5, 7);
+        final String partOfString = null;
         // --end-->
 
         final String expectedString = "is";
@@ -105,7 +106,7 @@ class StringTest {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = sentence.split(" ");
+        String[] words = null;
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -118,7 +119,7 @@ class StringTest {
 
         // TODO: Extract words in the sentence.
         // <--Start
-        String[] words = sentence.split("/");
+        String[] words = null;
         // --End-->
 
         assertArrayEquals(new String[] {"This", "is", "Mike"}, words);
@@ -133,20 +134,6 @@ class StringTest {
         // TODO: Create string using StringBuilder
         // <--Start
         StringBuilder builder = new StringBuilder();
-
-        StringBuilder edge = new StringBuilder();
-        edge.append("|");
-        for (int i = 0; i < width - 2; ++i) edge.append("-");
-        edge.append("|\n");
-
-        StringBuilder body = new StringBuilder();
-        body.append("|");
-        for (int i = 0; i < width - 2; ++i) body.append(" ");
-        body.append("|\n");
-
-        builder.append(edge);
-        for (int i = 0; i < height - 2; ++i) builder.append(body);
-        builder.append(edge);
         // --End-->
 
         final String expected =
@@ -165,7 +152,6 @@ class StringTest {
         int sum = 0;
         // TODO: Write some code to calculate the checksum of the string. The checksum is the sum of each string char.
         // <--Start
-        for (int i = 0; i < text.length(); ++i) sum += text.charAt(i);
         // --End-->
 
         assertEquals(3655, sum);
@@ -181,7 +167,7 @@ class StringTest {
         // こ - U+3053
         // れ - U+308c
         // <--Start
-        final String actual = "\u306a\u306b\u3053\u308c";
+        final String actual = null;
         // --End-->
 
         assertEquals(expected, actual);
@@ -194,7 +180,7 @@ class StringTest {
 
         // TODO: Modify the following code to create new string from original String
         // <--Start
-        final String reversed = new StringBuilder(original).reverse().toString();
+        final String reversed = null;
         // --End-->
 
         assertEquals("654321", reversed);
@@ -211,8 +197,8 @@ class StringTest {
 
         // TODO: Please change the value of the following 2 lines to pass the test.
         // <--start
-        Optional<Boolean> actualResultOfEqual = Optional.of(false);
-        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.of(true);
+        Optional<Boolean> actualResultOfEqual = Optional.empty();
+        Optional<Boolean> actualResultOfEqualIgnoreCase = Optional.empty();
         // --end-->
 
         assertEquals(equalResult, actualResultOfEqual);
@@ -227,10 +213,9 @@ class StringTest {
         // TODO: please modify the following code to pass the test
         // <--start
         // TODO: please write down the result directly.
-        final int expectedCharLength = 39;
+        final int expectedCharLength = 0;
         // TODO: please call some method to calculate the result.
-        final int actualCodePointLength =
-            Character.codePointCount(withSurrogatePairs, 0, withSurrogatePairs.length());
+        final int actualCodePointLength = 0;
         // --end-->
 
         assertEquals(expectedCharLength, withSurrogatePairs.length());
@@ -258,7 +243,7 @@ class StringTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expectedText = "Hello, Harry. Next year, you will be 23.";
+        final String expectedText = null;
         // --end-->
 
         assertEquals(expectedText, text);
@@ -267,17 +252,7 @@ class StringTest {
     private int[] getCodePointsFromString(String withSurrogatePairs) {
         // TODO: please implement the method to the pass the test
         // <--start
-        int length = withSurrogatePairs.length();
-        int codePointCount = Character.codePointCount(withSurrogatePairs, 0, length);
-        int[] codePointArray = new int[codePointCount];
-        int codePointIndex = 0;
-
-        for (int charIndex = 0, cp; charIndex < length; charIndex += Character.charCount(cp)) {
-            cp = withSurrogatePairs.codePointAt(charIndex);
-            codePointArray[codePointIndex++] = cp;
-        }
-
-        return codePointArray;
+        throw new NotImplementedException();
         // --end-->
     }
 

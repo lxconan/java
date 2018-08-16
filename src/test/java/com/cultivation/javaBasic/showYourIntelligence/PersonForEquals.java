@@ -1,5 +1,7 @@
 package com.cultivation.javaBasic.showYourIntelligence;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.Objects;
 
 @SuppressWarnings("unused")
@@ -34,14 +36,7 @@ public class PersonForEquals {
     public boolean equals(Object obj) {
         // TODO: please modify the following code to pass the test
         // <--start
-        if (obj == null) return false;
-        if (this == obj) return true;
-        if (getClass() != obj.getClass()) return false;
-
-        PersonForEquals other = (PersonForEquals) obj;
-
-        return Objects.equals(name, other.name)
-            && Objects.equals(yearOfBirth, other.yearOfBirth);
+        throw new NotImplementedException();
         // --end-->
     }
 
@@ -49,7 +44,7 @@ public class PersonForEquals {
     public int hashCode() {
         // TODO: please modify the following code to pass the test
         // <--start
-        return Objects.hash(name, yearOfBirth);
+        throw new NotImplementedException();
         // --end-->
     }
 }

@@ -4,6 +4,7 @@ import com.cultivation.javaBasic.showYourIntelligence.DistinctIterable;
 import com.cultivation.javaBasic.showYourIntelligence.Sequence;
 import com.cultivation.javaBasic.util.RandomCharacterIterable;
 import org.junit.jupiter.api.Test;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
 
@@ -28,9 +29,7 @@ class CollectionsTest {
         // TODO: you could ONLY use `Iterator.hasNext` and `Iterator.next` API to copy items to a `List`. No `for` is
         // allowed.
         // <--start
-        while (iterator.hasNext()) {
-            list.add(iterator.next());
-        }
+
         // --end-->
 
         return list;
@@ -58,7 +57,7 @@ class CollectionsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final List<String> expected = Arrays.asList("Amy", "Bob", "Carl");
+        final List<String> expected = Arrays.asList("I", "Don't", "Know");
         // --end-->
 
         assertIterableEquals(expected, staff);
@@ -90,7 +89,7 @@ class CollectionsTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final List<Integer> expected = Arrays.asList(0, 1, 2, 10, 11);
+        final List<Integer> expected = Arrays.asList(0, 0, 0);
         // --end-->
 
         assertIterableEquals(expected, integers);

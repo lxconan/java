@@ -20,12 +20,13 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final Optional<Boolean> expected = Optional.of(true);
+        final Optional<Boolean> expected = Optional.empty();
         // --end-->
 
         assertEquals(expected.get(), referenceToSameObject);
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Test
     void should_point_to_different_object() {
         LocalDate goodDay = LocalDate.of(2018, 5, 10);
@@ -35,7 +36,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final Optional<Boolean> expected = Optional.of(false);
+        final Optional<Boolean> expected = Optional.empty();
         // --end-->
 
         assertEquals(expected.get(), referenceToSameObject);
@@ -48,9 +49,9 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expectedName = null;
-        final int expectedYearOfBirth = 0;
-        final LocalDate expectedRegisteredDate = null;
+        final String expectedName = "What";
+        final int expectedYearOfBirth = 479;
+        final LocalDate expectedRegisteredDate = LocalDate.now();
         // --end-->
 
         assertEquals(expectedName, instance.getName());
@@ -66,7 +67,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final int expected = 5;
+        final int expected = 0;
         // --end-->
 
         assertEquals(expected, value);
@@ -88,7 +89,7 @@ class ObjectTest {
         // TODO: please modify the following code to pass the test.
         // You can only choose from `sameReference` and `instanceCreatedByMethod`
         // <--start
-        final Object expected = sameReference;
+        final Object expected = null;
         // --end-->
 
         assertEquals(expected, objectReference);
@@ -102,7 +103,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expected = "Updated Name";
+        final String expected = null;
         // --end-->
 
         assertEquals(expected, instance.getName());
@@ -116,7 +117,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test. You should write the result directly.
         // <--start
-        final String expected = "methodWithOneParameter(Object)";
+        final String expected = null;
         // --end-->
 
         assertEquals(expected, actual);
@@ -132,7 +133,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test. You should write the result directly.
         // <--start
-        final String expected = "methodWithTwoParameters(String, Integer)";
+        final String expected = null;
         // --end-->
 
         assertEquals(expected, actual);
@@ -144,7 +145,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expected = "Untitled";
+        final String expected = null;
         // --end-->
 
         assertEquals(expected, instance.getName());
@@ -159,12 +160,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String[] expected = {
-            "Field Initializer",
-            "Initialization Block",
-            "Constructor with argument",
-            "Default constructor"
-        };
+        final String[] expected = {};
         // --end-->
 
         assertArrayEquals(expected, logs);
@@ -176,7 +172,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expected = "1\n2\n3\n";
+        final String expected = null;
         // --end-->
 
         assertEquals(expected, message);
@@ -190,7 +186,7 @@ class ObjectTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String expected = "1\n2\n3\n";
+        final String expected = null;
         // --end-->
 
         assertEquals(expected, message);

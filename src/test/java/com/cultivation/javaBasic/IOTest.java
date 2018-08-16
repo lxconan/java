@@ -3,13 +3,12 @@ package com.cultivation.javaBasic;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junitpioneer.jupiter.TempDirectory;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.*;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,33 +23,24 @@ class IOTest {
         assertEquals(message, readAllText(filePath, StandardCharsets.UTF_8));
     }
 
-    @SuppressWarnings("SameParameterValue")
+    @SuppressWarnings({"SameParameterValue", "unused", "RedundantThrows"})
     private static void writeAllText(String message, Path filePath, Charset charset) throws IOException {
         // TODO: please implement the method to writer text to file using `PrintWriter`.
         // <--start
-        try (PrintWriter writer = new PrintWriter(filePath.toString(), charset.name())) {
-            writer.append(message);
-        }
+        throw new NotImplementedException();
         // --end-->
     }
 
 
-    @SuppressWarnings("SameParameterValue")
+    @SuppressWarnings({"SameParameterValue", "unused", "RedundantThrows"})
     private static String readAllText(Path path, Charset charset) throws IOException {
         // TODO: please implement the method to read text from file using `Files` helper methods.
         // <--start
-        StringBuilder result = new StringBuilder();
-        try (Stream<String> lines = Files.lines(path, charset)) {
-            lines.forEach(l -> {
-                result.append(l);
-                result.append(System.lineSeparator());
-            });
-        }
-
-        return result.toString();
+        throw new NotImplementedException();
         // --end-->
     }
 
+    @SuppressWarnings({"unused", "RedundantThrows"})
     @Test
     void should_be_able_to_write_and_read_binary_data_to_file(@TempDirectory.TempDir Path dir) throws Exception {
         Path filePath = dir.resolve("sample.bin");
@@ -60,10 +50,6 @@ class IOTest {
 
         // TODO: please write `firstValue` and `pi` to `filePath`
         // <--start
-        try (DataOutputStream out = new DataOutputStream(new FileOutputStream(filePath.toString()))) {
-            out.writeInt(firstValue);
-            out.writeDouble(pi);
-        }
         // --end-->
 
         int actualFirstValue = 0;
@@ -71,10 +57,6 @@ class IOTest {
 
         // TODO: please read `actualFirstValue` and `actualPi` from `filePath`
         // <--start
-        try (DataInputStream in = new DataInputStream(new FileInputStream(filePath.toString()))) {
-            actualFirstValue = in.readInt();
-            actualPi = in.readDouble();
-        }
         // --end-->
 
         assertEquals(firstValue, actualFirstValue);

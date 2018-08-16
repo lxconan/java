@@ -8,13 +8,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CharTypeTest {
     @Test
     void should_describe_escaped_chars() {
-        final char backspace = '\b';
-        final char tab = '\t';
-        final char lineFeed = '\n';
-        final char carriageReturn = '\r';
-        final char doubleQuote = '\"';
-        final char singleQuote = '\'';
-        final char backslash = '\\';
+        // TODO: please modify the following code to pass the test
+        // <--start
+        final char backspace = ' ';
+        final char tab = ' ';
+        final char lineFeed = ' ';
+        final char carriageReturn = ' ';
+        final char doubleQuote = ' ';
+        final char singleQuote = ' ';
+        final char backslash = ' ';
+        // --end-->
 
         assertEquals(EscapedChars.BACKSPACE.getValue(), backspace);
         assertEquals(EscapedChars.TAB.getValue(), tab);
