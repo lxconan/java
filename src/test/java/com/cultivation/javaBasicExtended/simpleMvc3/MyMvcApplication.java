@@ -1,24 +1,28 @@
 package com.cultivation.javaBasicExtended.simpleMvc3;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 abstract class MyMvcApplication extends SimpleMvcHttpHandler {
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private final Map<String, Route> routes = new HashMap<>();
 
-    @SuppressWarnings("SameParameterValue")
+    @SuppressWarnings({"SameParameterValue", "unused"})
     void registerRoute(
         String pattern,
         Class<? extends Controller> controllerClazz,
         String actionName) {
         // TODO: please implement the following code to pass the test
         // <--start
-        routes.put(pattern, new RegexRoute(pattern, controllerClazz, actionName));
+        throw new NotImplementedException();
         // --end-->
     }
 
+    @SuppressWarnings("unused")
     @Override
     Route getRoute(MyHttpRequest request) {
         URI uri = request.getURI();
@@ -26,10 +30,7 @@ abstract class MyMvcApplication extends SimpleMvcHttpHandler {
 
         // TODO: please implement the following code to pass the test
         // <--start
-        Optional<Route> matchedRoute = routes.values().stream()
-            .filter(r -> r.isMatch(path))
-            .findFirst();
-        return matchedRoute.orElse(null);
+        throw new NotImplementedException();
         // --end-->
     }
 }

@@ -3,6 +3,7 @@ package com.cultivation.javaBasicExtended.simpleMvc2;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -36,18 +37,11 @@ class SimpleMvcHttpHandler implements HttpHandler {
         }
     }
 
+    @SuppressWarnings("unused")
     private void handleInternal(MyHttpContext context) {
         // TODO: please create response according to test.
         // <--start
-        MyHttpRequest request = context.getRequest();
-        URI uri = request.getURI();
-
-        MyHttpResponse response = context.getResponse();
-
-        response.setBodyBuffer(("Hello " + uri.toString()).getBytes());
-        Map<String, String> headers = response.getHeaders();
-        headers.put("Content-Type", "text/plain");
-        response.setStatusCode(200);
+        throw new NotImplementedException();
         // --end-->
     }
 

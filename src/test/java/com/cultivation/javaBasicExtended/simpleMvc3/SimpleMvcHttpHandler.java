@@ -1,9 +1,9 @@
 package com.cultivation.javaBasicExtended.simpleMvc3;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -60,6 +60,7 @@ abstract class SimpleMvcHttpHandler implements HttpHandler {
         headers.put("Content-Type", "text/plain");
     }
 
+    @SuppressWarnings({"ConstantConditions", "unused"})
     private void invokeControllerAction(
         MyHttpContext context,
         Controller controller,
@@ -77,10 +78,9 @@ abstract class SimpleMvcHttpHandler implements HttpHandler {
         try {
             Object result = method.invoke(controller, context.getRequest());
 
-            // TODO: please serialize the returned result to JSON string
+            // TODO: please serialize the returned result to JSON string using Jackson.
             // <--start
-            ObjectMapper objectMapper = new ObjectMapper();
-            String json = objectMapper.writeValueAsString(result);
+            String json = null;
             // --end-->
 
             makeResponse(context, json);
@@ -97,14 +97,11 @@ abstract class SimpleMvcHttpHandler implements HttpHandler {
         headers.put("Content-Type", "application/json");
     }
 
+    @SuppressWarnings("unused")
     private Controller createController(Class<? extends Controller> controllerClass) {
         // TODO: create a controller class, please note that the controller class will not have any dependency
         // <--start
-        try {
-            return controllerClass.newInstance();
-        } catch (Exception e) {
-            throw new IllegalStateException("Fail to create controller", e);
-        }
+        throw new NotImplementedException();
         // --end-->
     }
 

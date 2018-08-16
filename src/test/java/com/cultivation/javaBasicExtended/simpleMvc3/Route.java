@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.simpleMvc3;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,6 +22,7 @@ abstract class Route {
     public abstract boolean isMatch(String segment);
 }
 
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 class RegexRoute extends Route {
     private final Pattern compiledPattern;
 
@@ -32,9 +35,7 @@ class RegexRoute extends Route {
     public boolean isMatch(String segment) {
         // TODO: please implement the following method to pass the test
         // <--start
-        if (segment == null) return false;
-        Matcher matcher = compiledPattern.matcher(segment);
-        return matcher.matches();
+        throw new NotImplementedException();
         // --end-->
     }
 }

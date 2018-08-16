@@ -1,9 +1,11 @@
 package com.cultivation.javaBasicExtended.matrixMultiplication;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.Arrays;
 import java.util.Objects;
 
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "unused"})
 class Matrix {
     private final int[][] storage;
 
@@ -14,57 +16,20 @@ class Matrix {
     public Matrix(int[][] matrixArray) {
         // TODO: please implement the constructor of a matrix.
         // <--start
-        if (matrixArray == null) {throw new IllegalArgumentException("Raw matrix is null");}
-        ensureValidRectMatrix(matrixArray);
-        this.storage = matrixArray;
+        throw new NotImplementedException();
         // --end-->
     }
 
     public static Matrix multiply(Matrix left, Matrix right) {
         // TODO: please implement the method to pass the tests.
         // <--start
-        if (left == null || right == null) { throw new IllegalArgumentException(); }
-        int leftColumns = left.columns();
-        if (leftColumns != right.rows()) { throw new IllegalArgumentException(); }
-        int leftRows = left.rows();
-        int rightColumns = right.columns();
-
-        int[][] result = new int[leftRows][rightColumns];
-        for (int leftRowIndex = 0; leftRowIndex < leftRows; ++leftRowIndex) {
-            for (int rightColumnIndex = 0; rightColumnIndex < rightColumns; ++rightColumnIndex) {
-                for (int leftColumnIndex = 0; leftColumnIndex < leftColumns; ++leftColumnIndex) {
-                    result[leftRowIndex][rightColumnIndex] +=
-                        left.storage[leftRowIndex][leftColumnIndex] * right.storage[leftColumnIndex][rightColumnIndex];
-                }
-            }
-        }
-
-        return new Matrix(result);
+        throw new NotImplementedException();
         // --end-->
     }
 
     // TODO: you can add some helper method if you like.
     // <--start
-    private static void ensureValidRectMatrix(int[][] matrix) {
-        if (matrix.length == 0) {
-            throw new IllegalArgumentException("Raw matrix contains 0 row");
-        }
 
-        boolean anyNull = Arrays.stream(matrix).anyMatch(Objects::isNull);
-        if (anyNull) {
-            throw new IllegalArgumentException("Raw matrix contains null row");
-        }
-
-        int columns = matrix[0].length;
-        if (columns == 0) {
-            throw new IllegalArgumentException("At least one row of raw matrix contains 0 column");
-        }
-
-        boolean notRectangular = Arrays.stream(matrix).anyMatch(row -> row.length != columns);
-        if (notRectangular) {
-            throw new IllegalArgumentException("Raw matrix is not rectangle");
-        }
-    }
     // --end->
 
     public int[] getRow(int rowIndex) {

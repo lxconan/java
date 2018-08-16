@@ -1,12 +1,11 @@
 package com.cultivation.javaBasicExtended.simpleMvc;
 
-import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.Closeable;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 @SuppressWarnings("WeakerAccess")
@@ -24,16 +23,7 @@ class SimpleHttpServer implements Closeable {
         handler = exchange -> {
             // TODO: please create HTTP 200 response with content "Hello" (without quotes)
             // <--start
-            byte[] content = "Hello".getBytes();
-            Headers responseHeaders = exchange.getResponseHeaders();
-            responseHeaders.add("Content-Type", "text/plain");
-
-            exchange.sendResponseHeaders(200, content.length);
-
-            OutputStream stream = exchange.getResponseBody();
-            stream.write(content);
-            stream.close();
-            exchange.close();
+            throw new NotImplementedException();
             // --end-->
         };
     }
