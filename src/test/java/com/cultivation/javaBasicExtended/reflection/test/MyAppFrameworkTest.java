@@ -59,13 +59,13 @@ class MyAppFrameworkTest {
     }
 
     @Test
-    void should_get_404_if_the_request_method_is_not_public() {
+    void should_get_403_if_the_request_method_is_not_public() {
         MyAppFramework app = new MyAppFramework();
         app.registerController(StandardController.class);
         Response response = app.getResponse(
             "com.cultivation.javaBasicExtended.reflection.test.StandardController", "doSomethingPackagePrivate");
 
-        assertEquals(404, response.getStatus());
+        assertEquals(403, response.getStatus());
     }
 
     @Test
@@ -90,5 +90,25 @@ class MyAppFrameworkTest {
         Response response = app.getResponse(
             "com.cultivation.javaBasicExtended.reflection.test.UnhandledExceptionController", "fail");
         assertEquals(500, response.getStatus());
+    }
+
+    @Test
+    void should_get_503_if_action_return_type_is_not_response() {
+        MyAppFramework app = new MyAppFramework();
+        app.registerController(BadActionController.class);
+
+        Response response = app.getResponse(
+            "com.cultivation.javaBasicExtended.reflection.test.BadActionController", "badAction");
+        assertEquals(503, response.getStatus());
+    }
+
+    @Test
+    void should_get_503_if_action_contains_parameter() {
+        MyAppFramework app = new MyAppFramework();
+        app.registerController(BadActionController.class);
+
+        Response response = app.getResponse(
+            "com.cultivation.javaBasicExtended.reflection.test.BadActionController", "badActionWithParameter");
+        assertEquals(503, response.getStatus());
     }
 }

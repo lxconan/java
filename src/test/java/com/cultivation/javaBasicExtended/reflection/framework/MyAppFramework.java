@@ -3,8 +3,10 @@ package com.cultivation.javaBasicExtended.reflection.framework;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 @SuppressWarnings("WeakerAccess")
 public class MyAppFramework {
@@ -43,11 +45,24 @@ public class MyAppFramework {
     }
 
     private Response invokeAction(String requestController, Method action) {
+        if (!Modifier.isPublic(action.getModifiers())) {
+            return new Response(403);
+        }
+
+        Class<?> returnType = action.getReturnType();
+        if (returnType != Response.class) {
+            return new Response(503);
+        }
+
+        if (action.getParameterCount() > 0) {
+            return new Response(503);
+        }
+
         try {
             Object controller = registeredControllers.get(requestController).newInstance();
             return (Response) action.invoke(controller);
         } catch (IllegalAccessException e) {
-            return new Response(503);
+            return new Response(403);
         } catch (InvocationTargetException | InstantiationException e) {
             return new Response(500);
         }
@@ -55,13 +70,11 @@ public class MyAppFramework {
 
     private Method getControllerMethod(String requestController, String requestMethod) {
         Class<?> controllerClazz = registeredControllers.get(requestController);
-        try {
-            Method declaredMethod = controllerClazz.getDeclaredMethod(requestMethod);
-            int modifiers = declaredMethod.getModifiers();
-            if (!Modifier.isPublic(modifiers)) { return null; }
-            return declaredMethod;
-        } catch (NoSuchMethodException e) {
-            return null;
-        }
+
+        Method[] declaredMethods = controllerClazz.getDeclaredMethods();
+        Optional<Method> matchedMethod = Arrays.stream(declaredMethods)
+            .filter(clazz -> clazz.getName().equals(requestMethod))
+            .findFirst();
+        return matchedMethod.orElse(null);
     }
 }
