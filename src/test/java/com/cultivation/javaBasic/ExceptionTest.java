@@ -81,7 +81,7 @@ class ExceptionTest {
 
         // TODO: please modify the following code to pass the test
         // <--start
-        final String[] expected = {"ClosableWithException.close", "ClosableWithoutException.close"};
+        final String[] expected = {};
         // --end-->
 
         assertArrayEquals(
