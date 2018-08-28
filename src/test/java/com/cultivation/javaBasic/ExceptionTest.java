@@ -68,7 +68,7 @@ class ExceptionTest {
 
     @SuppressWarnings({"EmptyTryBlock", "unused"})
     @Test
-    void should_stop_closing_if_exception_occurred_beforehand() throws Exception {
+    void should_call_closing_even_if_exception_throws() throws Exception {
         ArrayList<String> logger = new ArrayList<>();
 
         try {
