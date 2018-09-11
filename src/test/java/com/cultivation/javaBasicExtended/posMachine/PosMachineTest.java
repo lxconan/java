@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.posMachine;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 
@@ -11,9 +13,7 @@ import java.io.StringWriter;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/*
- * Difficulty: Hard
- */
+@Difficulty(DifficultyLevel.HARD)
 class PosMachineTest {
     @Test
     void should_print_empty_if_barcode_is_not_provided() throws IOException {

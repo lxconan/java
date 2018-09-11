@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.simpleMvc3;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Feign;
 import feign.Response;
@@ -16,6 +18,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Difficulty(DifficultyLevel.SUPERHARD)
 class SimpleHttpServerFacts {
     private SimpleHttpServer server;
     private static final String baseAddress = "http://localhost:4444";

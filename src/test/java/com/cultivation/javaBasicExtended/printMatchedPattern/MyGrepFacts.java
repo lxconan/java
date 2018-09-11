@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.printMatchedPattern;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -8,9 +10,7 @@ import java.io.StringReader;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-/*
- * Difficulty: Easy
- */
+@Difficulty(DifficultyLevel.EASY)
 class MyGrepFacts {
     @Test
     void should_throw_if_reader_is_null_or_pattern_is_null() {

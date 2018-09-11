@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.reflection.test;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import com.cultivation.javaBasicExtended.reflection.framework.MyAppFramework;
 import com.cultivation.javaBasicExtended.reflection.framework.Response;
 import org.junit.jupiter.api.Test;
@@ -7,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+@Difficulty(DifficultyLevel.SUPERHARD)
 class MyAppFrameworkTest {
     @Test
     void should_throw_if_register_duplicated_controller_clazz() {

@@ -1,13 +1,13 @@
 package com.cultivation.javaBasicExtended.myIoC;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import com.cultivation.javaBasicExtended.myIoC.util.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
- * Difficulty: Super hard
- */
+@Difficulty(DifficultyLevel.SUPERHARD)
 class MyIocFacts {
     @Test
     void should_create_object_with_default_constructor() {

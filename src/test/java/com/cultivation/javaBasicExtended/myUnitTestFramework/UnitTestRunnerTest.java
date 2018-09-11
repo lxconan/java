@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.myUnitTestFramework;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import com.cultivation.javaBasicExtended.myUnitTestFramework.exampleTests.WithMultipleFailures;
 import com.cultivation.javaBasicExtended.myUnitTestFramework.exampleTests.WithOneFailureTestMethod;
 import com.cultivation.javaBasicExtended.myUnitTestFramework.exampleTests.WithOneTestMethod;
@@ -10,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Difficulty(DifficultyLevel.SUPERHARD)
 class UnitTestRunnerTest {
     private UnitTestRunningResult runTest(Class<?> unitTestClass) {
         UnitTestRunner runner = new UnitTestRunner();
