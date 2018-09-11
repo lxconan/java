@@ -1,5 +1,7 @@
 package com.cultivation.javaBasicExtended.simpleMvc;
 
+import com.cultivation.javaBasicExtended.Difficulty;
+import com.cultivation.javaBasicExtended.DifficultyLevel;
 import feign.Feign;
 import feign.Response;
 import feign.codec.StringDecoder;
@@ -15,6 +17,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Difficulty(DifficultyLevel.SUPERHARD)
 class SimpleHttpServerFacts {
     private SimpleHttpServer server;
     private static final String baseAddress = "http://localhost:4444";
@@ -35,6 +38,7 @@ class SimpleHttpServerFacts {
         assertEquals(200, response.status());
     }
 
+    @SuppressWarnings("Duplicates")
     @Test
     void should_get_http_content_type() {
         SimpleHttpServerClient client = Feign.builder()
