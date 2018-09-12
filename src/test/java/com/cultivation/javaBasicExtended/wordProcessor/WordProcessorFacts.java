@@ -4,16 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WordProcessorFacts {
     @Test
     void should_throw_on_null() {
         final int validWidth = 10;
 
-        assertThrows(IllegalArgumentException.class, () -> {
-            new TextProcessor(validWidth).process(null);
-        });
+        assertThrows(IllegalArgumentException.class, () ->
+            new TextProcessor(validWidth).process(null));
     }
 
     @Test
@@ -21,9 +19,8 @@ class WordProcessorFacts {
         int[] invalidWidths = {-1, 9, 81, Integer.MAX_VALUE};
 
         for (int invalidWidth : invalidWidths) {
-            assertThrows(IllegalArgumentException.class, () -> {
-                new TextProcessor(invalidWidth).process(null);
-            });
+            assertThrows(IllegalArgumentException.class, () ->
+                new TextProcessor(invalidWidth).process(null));
         }
     }
 
